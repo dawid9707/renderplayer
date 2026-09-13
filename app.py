@@ -8,9 +8,19 @@ from fastapi.responses import FileResponse
 
 app = FastAPI()
 
+# Dozwolone źródła (frontend)
+origins = [
+    "https://fluffy-fortnight-x5p4xq69pj973v76q-3001.app.github.dev",
+    "https://renderplayer.onrender.com",
+    # Możesz też dodać lokalny adres do testów:
+    "http://localhost:3000",
+    "http://localhost:3001",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Zezwala na połączenia z Twojej aplikacji w przeglądarce
+    allow_origins=origins,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
